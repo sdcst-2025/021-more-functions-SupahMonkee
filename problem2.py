@@ -1,7 +1,7 @@
 #!python3
 """
 ##### Problem 2
-Create a function that determines if a triangle is scalene, right or obtuse.  
+Create a function that determines if a triangle is acute, right or obtuse.  
 3 input parameters:  
 float: one side  
 float: another side  
@@ -21,8 +21,25 @@ assert triangle(1,1,4) == 0
 (2 points)
 """
 
-def triangle():
-    return
+import math, statistics
+
+def triangle(l1,l2,l3):
+    numlist = [l1,l2,l3]
+    a = min(numlist)
+    b = statistics.median(numlist)
+    c = max(numlist)
+    if a + b < c:
+        triangletype = 0
+    else:
+        if (a**2)+(b**2) > (c**2):
+            triangletype = 1
+        if (a**2)+(b**2) == (c**2):
+            triangletype = 2
+        if (a**2)+(b**2) < (c**2):
+            triangletype = 3
+    return triangletype
+
+#done!
 
 def tests():
     assert triangle(12,5,13) == 2     
